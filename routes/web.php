@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AndersenTaskController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [AndersenTaskController::class, 'show'])
+    ->name('andersen-tasks.show');
+
+Route::post('/andersen-tasks', [AndersenTaskController::class, 'store'])
+    ->name('andersen-tasks.store');
