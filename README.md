@@ -2,6 +2,8 @@
 
 Generates a form for adding things, and showing them immediately.
 
+![Alt text](https://drive.google.com/uc?export=view&id=1Q-EVGdv_3W9wauoqTjORH1kNxwaxm3UR)
+
 ## Prerequisites
 
 -   Docker
