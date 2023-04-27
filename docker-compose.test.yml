@@ -1,0 +1,31 @@
+version: "3.9"
+
+networks:
+  andersen-technical-task-network-test:
+    driver: bridge
+
+services:
+  db-test:
+    build:
+      context: ./
+      dockerfile: Dockerfile.mysql
+    environment:
+      - MYSQL_DATABASE=testing
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+      - MYSQL_RANDOM_ROOT_PASSWORD=true
+    ports:
+      - "3307:3306"
+    networks:
+      - andersen-technical-task-network-test
+  phpmyadmin-test:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: db-test
+      PMA_PORT: 3306
+    ports:
+      - "8081:80"
+    depends_on:
+      - db-test
+    networks:
+      - andersen-technical-task-network-test
