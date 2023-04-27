@@ -3,15 +3,13 @@ version: "3.9"
 networks:
     andersen-technical-task-network:
         driver: bridge
-    andersen-technical-task-network-test:
-        driver: bridge
 
 services:
     app:
         build:
             context: ./
         ports:
-            - "8001:8000"
+            - "8001:8001"
         environment:
             - DB_HOST=db
             - DB_PORT=3306
@@ -35,19 +33,6 @@ services:
             - "3306:3306"
         networks:
             - andersen-technical-task-network
-    db-test:
-        build:
-            context: ./
-            dockerfile: Dockerfile.mysql
-        environment:
-            - MYSQL_DATABASE=testing
-            - MYSQL_USER=user
-            - MYSQL_PASSWORD=password
-            - MYSQL_RANDOM_ROOT_PASSWORD=true
-        ports:
-            - "3307:3306"
-        networks:
-            - andersen-technical-task-network-test
     phpmyadmin:
         image: phpmyadmin/phpmyadmin
         environment:
@@ -59,14 +44,3 @@ services:
             - db
         networks:
             - andersen-technical-task-network
-    phpmyadmin-test:
-        image: phpmyadmin/phpmyadmin
-        environment:
-            PMA_HOST: db-test
-            PMA_PORT: 3306
-        ports:
-            - "8081:80"
-        depends_on:
-            - db-test
-        networks:
-            - andersen-technical-task-network-test

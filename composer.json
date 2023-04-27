@@ -37,9 +37,15 @@
         }
     },
     "scripts": {
+        "serve": [
+            "php artisan serve"
+        ],
         "test": [
             "php artisan migrate --env=testing",
             "php artisan test"
+        ],
+        "migrate": [
+            "php artisan migrate"
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
