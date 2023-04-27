@@ -69,8 +69,14 @@ Generates a form for adding things, and showing them immediately.
     ```bash
     docker-compose up -d --build
     ```
+    
+2. Migrate.
 
-2. Access the application in your web browser.
+    ```bash
+    docker-compose exec app composer run migrate
+    ```
+
+3. Access the application in your web browser.
 
     ```plain
     http://localhost:8001
@@ -84,7 +90,7 @@ Generates a form for adding things, and showing them immediately.
     docker-compose -f docker-compose.test.yml up -d --build
     ```
 
-2. Run tests.
+2. Run tests (you need to install all required packages locally).
 
     ```bash
     composer run test
